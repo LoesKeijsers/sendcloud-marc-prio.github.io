@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://kit.fontawesome.com/7e8990ffcf.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="src/flags.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Prio Tool</title>
+  </head>
+  <body>
+      <div class="container">
+          <div class="row" style="height: 2rem;"></div>
+          <div class="row justify-content-center">
+              <div class="col-6">
+                <div class="card" style="width: 30rem;">
+                  <!-- CARD -->
+                  <div class="card-header">
+                    <h3 class="card-title text-center">Prio Tool</h3>
+                    <h6 class="card-subtitle text-center mb-2 text-muted">A nifty tool for the Integration Specialists</h6>
+                  </div>
+                    <div class="card-body">
+
+                      <form id="prio">
+                      <div id="error-messages"></div>
+                      <div class="input-group">
+                        <!-- SEGMENT -->
+                        <div class="input-group-prepend">
+                          <label class="input-group-text" for="inputSegment">Segment</label>
+                        </div>
+                        <select class="custom-select" id="inputSegment" required>
+                          <option selected disabled value="0">Choose...</option>
+                          <option value="S">S</option>
+                          <option value="M">M</option>
+                          <option value="L">L</option>
+                          <option value="XL">XL</option>
+                        </select>
+
+                        <!-- PARCELS PER DAY -->
+                        <div class="input-group-prepend">
+                          <label class="input-group-text" for="inputParcels">Parcels per day</label>
+                        </div>
+                        <select class="custom-select" id="inputParcels" required>
+                          <option selected disabled value="0">Choose...</option>
+                          <option value="1">1-10</option>
+                          <option value="10">10-25</option>
+                          <option value="25">25-50</option>
+                          <option value="50">50-100</option>
+                          <option value="100">100-200</option>
+                        </select>
+
+                        <!-- AFFECTED MARKETS -->
+                        <div class="mt-2 justify-content-center">
+                          <small class="text-muted">Select all affected markets</small>
+                        </div>
+                        <div class="input-group justify-content-center" id="inputMarkets">
+                          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                            <label class="btn btn-light">
+                              <input type="checkbox" name="inputMarket" id="marketDe" value="DE"> <span class="flag flag-de"> </span>
+                            </label>
+                            <label class="btn btn-light">
+                              <input type="checkbox" name="inputMarket" id="marketFr" value="FR"> <span class="flag flag-fr"> </span>
+                            </label>
+                            <label class="btn btn-light">
+                              <input type="checkbox" name="inputMarket" id="marketNl" value="NL"> <span class="flag flag-nl"> </span>
+                            </label>
+                            <label class="btn btn-light">
+                              <input type="checkbox" name="inputMarket" id="marketIt" value="IT"> <span class="flag flag-it"> </span>
+                            </label>
+                            <label class="btn btn-light">
+                              <input type="checkbox" name="inputMarket" id="marketEs" value="ES"> <span class="flag flag-es"> </span>
+                            </label>
+                            <label class="btn btn-outline-dark">
+                              <input type="checkbox" name="inputMarket" id="marketAll" value="ALL"> All
+                            </label>
+                          </div>
+                        </div>
+                        <!-- ISSUE DESCRIPTION -->
+                        <div class="mt-2 justify-content-center">
+                          <small class="text-muted">Issue description</small>
+                        </div>
+                        <div class="input-group mb-3">
+                          <select multiple class="form-control" id="issuesDescription" onclick="issueGrader(this);">
+                          </select>
+                        </div>
+
+                        <!-- ISSUE GRADE -->
+                        <div class="justify-content-center">
+                          <small class="text-muted">Issue grade</small>
+                        </div>
+                        <div class="input-group mb-3">
+                          <select class="form-control" id="issuesGrade" disabled>
+                          </select>
+                        </div>
+
+                        <!-- SERIOUSNESS FACTORS -->
+                        <div class="mt-2 justify-content-center">
+                          <small class="text-muted">Seriousness factors</small>
+                        </div>
+                        <div class="input-group mb-3">
+                          <div class="custom-control custom-checkbox custom-control-inline">
+                            <input type="checkbox" id="hasWorkaround" class="custom-control-input selected" checked>
+                            <label class="custom-control-label" for="hasWorkaround">Workaround possible</label>
+                          </div>
+                          <div class="custom-control custom-checkbox custom-control-inline">
+                            <input type="checkbox" id="hasChurnRisk" class="custom-control-input">
+                            <label class="custom-control-label" for="hasChurnRisk">Risk of churn</label>
+                          </div>
+                        </div>
+                        
+                        <!-- SUBMIT -->
+                        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row justify-content-center mt-3" id="resultsContainer" style="display:none;">
+                <div class="col-6">
+                  <div class="card" style="width: 30rem;">
+                    <div class="card-header">
+                      <ul class="nav nav-pills nav-fill">
+                        <li class="nav-item"><strong class="nav-link">Results</strong></li>
+                        <li class="nav-item"><a class="nav-link active" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                          Debug
+                        </a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="card-body">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Calculated</th>
+                            <th scope="col">Rounded</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <td><h5 id="realResult"></h5></td>
+                          <td><h5 id="roundedResult"><strong></strong></h5></td>
+                        </tbody>
+                      </table>
+
+                      <div class="collapse" id="collapseExample">
+                        <code id="equation"></code> <br>
+                        <hr>
+                        <code id="equationElaborate"></code> <br>
+                        <small><strong>Bold</strong> numbers are multipliers!</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="row" style="height: 6rem;"></div>
+            </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="prio.js"></script>
+    <script>
+      
+      
+    </script>
+  </body>
+</html>

@@ -1,0 +1,128 @@
+{
+    "seg": {
+        "multiplier": 2,
+        "S": {
+            "weight": 0.1
+        },
+        "M": {  
+            "weight": 0.3
+        },
+        "L": {
+            "weight": 0.4
+        },
+        "XL": {
+            "weight": 0.85
+        }
+    },
+
+    "par": {
+        "multiplier": 2.5,
+        "1": {
+            "weight": 0.1
+        },
+        "10": {
+            "weight": 0.2
+        },
+        "25": {
+            "weight": 0.4
+        },
+        "50": {
+            "weight": 0.6   
+        },
+        "100": {
+            "weight": 0.9
+        }
+    },
+
+    "mar": {
+        "multiplier": 0.55,
+        "DE": {
+            "weight": 0.2
+        },
+        "FR": {
+            "weight": 0.2
+        },
+        "NL": {
+            "weight": 0.2
+        },
+        "IT": {
+            "weight": 0.2
+        },
+        "ES": {
+            "weight": 0.2
+        },
+        "All": {
+            "weight": 0.5
+        }
+    },
+
+    "desc": {
+        "multiplier": 4,
+        "issues": [
+            {
+                "name": "Return Portal",
+                "idName": "Return",
+                "grades": [
+                    {
+                        "gradeName": "Down",
+                        "gradeWeight": 0.8
+                    },
+                    {
+                        "gradeName": "Wrong Translation",
+                        "gradeWeight": 0.4
+                    },
+                    {
+                        "gradeName": "Cannot select Service Point",
+                        "gradeWeight": 0.6
+                    }
+                ]
+            },
+
+            {
+                "name": "Integration",
+                "idName": "Integration",
+                "grades": [
+                    {
+                        "gradeName": "Down",
+                        "gradeWeight": 0.8
+                    },
+                    {
+                        "gradeName": "Can't install",
+                        "gradeWeight": 0.6
+                    }
+                ]
+            },
+
+            {
+                "name": "Incoming Orders",
+                "idName": "IC",
+                "grades": [
+                    {
+                        "gradeName": "Slow",
+                        "gradeWeight": 0.3
+                    },
+                    {
+                        "gradeName": "Down",
+                        "gradeWeight": 0.6
+                    },
+                    {
+                        "gradeName": "Broken",
+                        "gradeWeight": 0.4
+                    }
+                ]
+            }
+        ]
+    },
+
+    "work": {
+        "multiplier": 1,
+        "available": 0.4,
+        "notAvailable": 0.9
+    },
+
+    "churn": {
+        "multiplier": 1.5,
+        "available": 0.9,
+        "notAvailable": 0.3
+    }
+}
