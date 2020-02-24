@@ -69,7 +69,7 @@
                     },
                     {
                         "gradeName": "Wrong Translation",
-                        "gradeWeight": 0.4
+                        "gradeWeight": 0.1
                     },
                     {
                         "gradeName": "Cannot select Service Point",
