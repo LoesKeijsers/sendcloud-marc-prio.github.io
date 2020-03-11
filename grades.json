@@ -89,6 +89,10 @@
                     {
                         "gradeName": "Can't install",
                         "gradeWeight": 0.6
+                    },
+                     {
+                        "gradeName": "Feedback not send",
+                        "gradeWeight": 0.4
                     }
                 ]
             },
