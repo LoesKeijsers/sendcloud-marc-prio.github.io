@@ -16,7 +16,7 @@
     },
 
     "par": {
-        "multiplier": 2.5,
+        "multiplier": 2.25,
         "1": {
             "weight": 0.1
         },
